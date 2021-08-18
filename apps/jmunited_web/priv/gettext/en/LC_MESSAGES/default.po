@@ -1,0 +1,94 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: en\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:53
+msgid "Back"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:27
+msgid "City"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:23
+msgid "Country"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:19
+msgid "Email"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:11
+msgid "First Name"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:15
+msgid "Last Name"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/login.html.eex:2
+msgid "Login Page"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:39
+msgid "Number"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:7
+msgid "Oops, something went wrong! Please check the errors below."
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:43
+msgid "Password"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:31
+msgid "Postal Code"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:48
+msgid "Sign Up"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/login.html.eex:20
+#: lib/jmunited_web/templates/session/signup.html.eex:1
+msgid "Sign up"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/controllers/session_controller.ex:60
+#: lib/jmunited_web/controllers/session_controller.ex:60
+msgid "Signed up successfully! Now please login!"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/session/signup.html.eex:35
+msgid "Street"
+msgstr ""
+
+#, elixir-format
+#: lib/jmunited_web/templates/page/index.html.eex:2
+msgid "Welcome to %{name}!"
+msgstr ""

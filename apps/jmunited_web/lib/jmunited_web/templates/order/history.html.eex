@@ -1,0 +1,31 @@
+<h1>Order History</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>City</th>
+      <th>ZIP</th>
+      <th>Street + number</th>
+      <th>Bus</th>
+      <th>Retour?</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for order <- @orders do %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.city %></td>
+      <td><%= order.zip %></td>
+      <td><%= order.street %> <%= order.number %></td>
+      <td><%= order.bus %></td>
+      <td><%= order.returned %></td>
+      <td><%= link "Show", to: Routes.order_path(@conn, :show, order) %></td>
+      <td><%= link "Retour", to: Routes.order_path(@conn, :retour, order) %></td>
+      
+    </tr>
+<% end %>
+  </tbody>
+</table>

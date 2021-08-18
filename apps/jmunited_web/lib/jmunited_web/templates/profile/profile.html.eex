@@ -1,0 +1,54 @@
+<article class="row">
+    <section id="username" class="column">
+        <h2><%= "Profile" %></h2>
+        <table>
+            <tr>
+                <th><%="First name"%></th>
+                <td><%= @user.first_name %></td>
+            </tr>
+            <tr>
+                <th><%="Last name"%></th>
+                <td><%= @user.last_name %></td>
+            </tr>
+            <tr>
+                <th><%="Email"%></th>
+                <td><%= @user.email %></td>
+            </tr>
+            <tr>
+                <th><%="Confirmed"%></th>
+                <td><%= @user.confirmed %></td>
+            </tr>
+            <tr>
+                <th><%="Country"%></th>
+                <td><%= @user.country %></td>
+            </tr>
+            <tr>
+                <th><%="Zip"%></th>
+                <td><%= @user.zip %></td>
+            </tr>
+            <tr>
+                <th><%="City"%></th>
+                <td><%= @user.city %></td>
+            </tr>
+            <tr>
+                <th><%="Street"%></th>
+                <td><%= @user.street %></td>
+            </tr>
+            <tr>
+                <th><%="Number"%></th>
+                <td><%= @user.number %></td>
+            </tr>
+            <tr>
+                <th><%="Role"%></th>
+                <td><%= @user.role %></td>
+                
+            </tr>
+            <td><a href="/profile/edit" class="link-button"><%="Edit Profile" %></a></td>
+            <%= if isAdmin(@conn) == true do %>
+            <%= form_for @conn, Routes.api_path(@conn, :generate), fn f -> %>
+            <td><%= submit "Generate API Key" %></td>
+            <% end %>
+            <% end %>
+        </table>
+    </section>
+</article>

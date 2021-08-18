@@ -1,0 +1,84 @@
+<h1>Listing Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for product <- @products do %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.size %></td>
+      <td><%= product.color %></td>
+      <td>$<%= product.price %></td>
+
+      
+      <td>
+        <span><%= link "Show", to: Routes.product_path(@conn, :show, product) %></span>
+        <%= if (isLoggedin(@conn) == true) do %>
+        <%= form_for @conn, Routes.cart_path(@conn, :create, product), fn f -> %>
+        <span><%= submit "Add to cart" %></span>
+        <span><%= number_input f, :amount, required: true %></span>
+        <%= error_tag f, :amount %>
+        <% end %>
+        <% end %>
+        <%= if (isLoggedin(@conn) == true && isAdmin(@conn) == true) do %>
+        <span><%= link "Edit", to: Routes.product_path(@conn, :edit, product) %></span>
+        <span><%= link "Delete", to: Routes.product_path(@conn, :delete, product), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <% end %>
+      </td>
+      
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+
+
+<h2>Filter</h2>
+
+<%= form_for @conn, Routes.product_path(@conn, :filter), [method: :get], fn f -> %>
+  <%= text_input f, :value %>
+  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">  
+
+  <%= radio_button f, :property, "name" %>
+  <%= label f, :property_name, "Name" %>
+
+  </div>
+
+  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">  
+  <%= radio_button f, :property, "size" %>
+  <%= label f, :property_size, "Size" %>
+  </div>
+  
+  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">  
+  <%= radio_button f, :property, "color" %>
+  <%= label f, :property_color, "Color" %>
+  </div>
+
+  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">  
+  <%= radio_button f, :property, "minprice" %>
+  <%= label f, :property_minprice, "Minimum Price" %>
+  </div>
+
+  <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">  
+  <%= radio_button f, :property, "maxprice" %>
+  <%= label f, :property_maxprice, "Maximum Price" %>
+  </div>
+
+  <div style="text-align: center;">
+  <input type="submit" value="Search">
+  </div>
+<% end %>
+
+<%= if (isLoggedin(@conn) == true && isAdmin(@conn) == true) do %>
+<span><%= link "New Product", to: Routes.product_path(@conn, :new) %></span>
+<% end %>
+

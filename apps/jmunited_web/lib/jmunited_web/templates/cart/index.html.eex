@@ -1,0 +1,45 @@
+<h1>Products in Cart</h1>
+<a href="<%= Routes.order_path(@conn, :history) %>"><%="Order History"%></a>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Total Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for product <- @products do %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.size %></td>
+      <td><%= product.color %></td>
+      <td>%<%= product.price %></td>
+      <td><%= product.amount %></td>
+      <td>$<%= product.total_price %></td>
+
+      
+      <td>
+        <span><%= link "Show", to: Routes.product_path(@conn, :show, product.id) %></span>
+        <%= if (isLoggedin(@conn) == true) do %>
+        <%= form_for @conn, Routes.cart_path(@conn, :update, product.id), [method: :put], fn f -> %>
+        <span><%= submit "Edit amount" %></span>
+        <span><%= number_input f, :amount, required: true %></span>
+        <%= error_tag f, :amount %>
+        <% end %>
+        <% end %>
+      </td>
+      
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<%= if (length @products) > 0 do %>
+  <h1> Total Price: $<%= @price %> </h1>
+    <span><%= link "Configure delivery address", to: Routes.order_path(@conn, :new) %></span>
+  <% end %>

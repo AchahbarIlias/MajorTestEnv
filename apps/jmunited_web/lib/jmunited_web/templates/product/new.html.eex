@@ -1,0 +1,13 @@
+<h1>New Product</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.product_path(@conn, :create)) %>
+
+<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
+
+<%= if (isAdmin(@conn) == true) do %>
+    <%= form_for @conn, Routes.file_path(@conn, :csv), [multipart: true], fn f -> %>
+    <label>CSV Input </label>
+    <%= file_input f, :file %>
+    <%= submit "Submit"%>
+  <% end %>
+  <% end %>

@@ -1,0 +1,43 @@
+<h1>Show Product</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @product.description %>
+  </li>
+
+  <li>
+    <strong>Size:</strong>
+    <%= @product.size %>
+  </li>
+
+  <li>
+    <strong>Color:</strong>
+    <%= @product.color %>
+  </li>
+
+  <li>
+    <strong>Price:</strong>
+    <%= @product.price %>
+  </li>
+
+</ul>
+
+<%= if (isLoggedin(@conn) == true) do %>
+<%= form_for @conn, Routes.cart_path(@conn, :create, @product), fn f -> %>
+        <span><%= submit "Add to cart" %></span>
+        <span><%= number_input f, :amount, required: true %></span>
+        <%= error_tag f, :amount %>
+        <% end %>
+                <% end %>
+
+<%= if (isLoggedin(@conn) == true && isAdmin(@conn) == true) do %>
+  <span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span>
+<% end %>
+<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>

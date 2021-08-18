@@ -1,0 +1,29 @@
+<h1>Order ID <%= @orderid %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Total Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for product <- @products do %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.size %></td>
+      <td><%= product.color %></td>
+      <td>$<%= product.price %></td>
+      <td><%= product.amount %></td>
+      <td>$<%= product.total_price %></td>
+      
+    </tr>
+<% end %>
+  </tbody>
+</table>
